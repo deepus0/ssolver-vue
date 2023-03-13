@@ -50,6 +50,10 @@ export class Cell {
     equals(cell: Cell): boolean {
         return this.id === cell.id && this.allocated === cell.allocated && this.row === cell.row && this.col === cell.col && this.box === cell.box && this.boxCell === cell.boxCell;
     }
+    
+    name(): string {
+        return `Cell ${this.col + 1} ${this.row + 1}`
+    }
 }
 
 export class SolvedStep {
@@ -93,6 +97,14 @@ export class Grid {
         return true;
     }
     
+    compare(grid: Grid): boolean {
+        for (let i = 0; i < this.cells.length; i++) {
+            if (grid.cells[i].allocated !== this.cells[i].allocated) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 export function createGrid(line: string): Grid {
