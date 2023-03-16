@@ -65,6 +65,7 @@ export class SolvedStep {
 }
 
 export class Grid {
+    name: string;
     cells: Cell[];
     steps: SolvedStep[] = [];
     iterationCount: number = 0;
@@ -72,7 +73,8 @@ export class Grid {
     cols: Cell[][] = [];
     boxes: Cell[][] = [];
 
-    constructor(cells: Cell[]) {
+    constructor(name: string, cells: Cell[]) {
+        this.name = name;
         this.cells = cells;
 
         for (let i = 0; i < 9; i++) {
@@ -107,7 +109,7 @@ export class Grid {
     }
 }
 
-export function createGrid(line: string): Grid {
+export function createGrid(name: string, line: string): Grid {
     const cells: Cell[] = [];
     for (let i = 0; i < line.length; i++) {
         const letter = line.charAt(i);
@@ -115,5 +117,5 @@ export function createGrid(line: string): Grid {
         const cell: Cell = new Cell(i, number, Math.floor(i / SU_NUMBER), i % SU_NUMBER);
         cells.push(cell);
     }
-    return new Grid(cells);
+    return new Grid(name, cells);
 }

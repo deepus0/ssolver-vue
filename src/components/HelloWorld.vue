@@ -1,25 +1,43 @@
 <script setup lang="ts">
+import GridTemplate from './GridTemplate.vue'
 import { ref } from 'vue'
-import {solve} from '../logic/logic';
+import { solve } from '../logic/logic';
+import { Grid } from '../logic/models';
 
 defineProps<{ msg: string }>()
 
+
+
+let grids: Grid[] = [];
+
 const count = ref(0)
+
+function getGrids() {
+  count.value++;
+  grids = solve().filter((g) => !g.isSolved());
+  console.log(grids);
+}
+
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
 
   <div class="card">
-    <button type="button" @click="solve()">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+    <button type="button" @click="getGrids()">count is {{ count }}</button>
+
+    <div v-for="grid in grids">
+      <GridTemplate :grid="grid" class="grid-template"/>
+    </div>
+
   </div>
 </template>
 
 <style scoped>
+.grid-template {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
 .read-the-docs {
   color: #888;
 }
