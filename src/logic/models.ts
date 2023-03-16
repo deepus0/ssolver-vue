@@ -109,6 +109,18 @@ export class Grid {
     }
 }
 
+export class EndGrid {
+    originalGrid: Grid;
+    endGrid: Grid;
+    expectedGrid: Grid;
+
+    constructor(og: Grid, end: Grid, expected: Grid) {
+        this.originalGrid = og;
+        this.endGrid = end;
+        this.expectedGrid = expected;
+    }
+}
+
 export function createGrid(name: string, line: string): Grid {
     const cells: Cell[] = [];
     for (let i = 0; i < line.length; i++) {

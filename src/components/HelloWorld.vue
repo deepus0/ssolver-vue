@@ -2,19 +2,19 @@
 import GridTemplate from './GridTemplate.vue'
 import { ref } from 'vue'
 import { solve } from '../logic/logic';
-import { Grid } from '../logic/models';
+import { EndGrid, Grid } from '../logic/models';
 
 defineProps<{ msg: string }>()
 
 
 
-let grids: Grid[] = [];
+let grids: EndGrid[] = [];
 
 const count = ref(0)
 
 function getGrids() {
   count.value++;
-  grids = solve().filter((g) => !g.isSolved());
+  grids = solve();
   console.log(grids);
 }
 

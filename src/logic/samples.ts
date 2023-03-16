@@ -1,7 +1,7 @@
 export interface TestExample {
     name: string;
     initial: string;
-    result?: string;
+    result: string;
 }
 
 export const ONE_MISSING: TestExample = {
@@ -67,7 +67,7 @@ export const MEDIUM_3: TestExample = {
 export const MEDIUM_4: TestExample = {
     name: 'Medium 4',
     initial: '920000036000802000083000250100507008000604000200301009064000970000409000870000025',
-    result: '764958123839124576125673498491762385283415967576839241647591832912386754358247619'
+    result: '921745836657832194483916257196527348738694512245381769364258971512479683879163425'
 }
 
 export const HARD_1: TestExample = {
